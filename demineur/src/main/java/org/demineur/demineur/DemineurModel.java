@@ -25,6 +25,18 @@ public class DemineurModel {
         }
     }
 
+    public void placerMinesManuellement(int x, int y) {
+        if (x < 0 || x >= grille.length || y < 0 || y >= grille[0].length) {
+            return;
+        }
+        if (!mines[x][y]) {
+            mines[x][y] = true;
+            minesRestantes++;
+        }
+    }
+
+
+
     private void placerMines(int nombreMines) {
         Random random = new Random();
         int minesPlacees = 0;
@@ -67,7 +79,7 @@ public class DemineurModel {
         }
 
         decouverte[x][y] = true;
-        System.out.println("Découvert: (" + x + ", " + y + ")");
+//        System.out.println("Découvert: (" + x + ", " + y + ")");
 
         if (grille[x][y] > 0) {
             return;
